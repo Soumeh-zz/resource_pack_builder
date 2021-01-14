@@ -1,0 +1,25 @@
+name: build-resource-pack
+on:
+  push:
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Build Files
+        run: |
+          python .github/workflows/build_pack.py
+      - name: Publish Files
+        uses: github-actions-x/commit@v2.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'master'
+          commit-message: 'Build Resource Pack Files'
+          force-add: 'true'
+          files: build
+          name: Publish Action

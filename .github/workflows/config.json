@@ -1,0 +1,13 @@
+{
+	"example": {
+		"sha1": true,
+		"files": [
+			"assets",
+			"pack.mcmeta",
+			"pack.png"
+		]
+	},
+	"example_auto": {
+		"directory": "pack_files"
+	}
+}
